@@ -1,0 +1,64 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+  <div fxLayout="column" fxLayoutAlign="end center">
+    <div class="child-1">
+      <!-- <select [(ngModel)]="moneda1" (change)='convertir()'>
+        <option selected value="USD">USD</option>
+        <option *ngFor="let x of test" value="{{x.id}}">{{x.id}}</option>
+      </select> -->
+      <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="moneda1" (change)='convertir()'>
+          <mat-option selected value="USD">USD</mat-option>
+          <mat-option *ngFor="let x of test" value="{{x.id}}">
+            {{x.id}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="child-2">
+      <button mat-raised-button color="warn" style="background-color: #5fbaa7; color: white;" (click)='swap()'>Swap
+      </button>
+
+    </div>
+    <div class="child-3">
+      <!-- <select [(ngModel)]="moneda2" (change)='convertir()'>
+        <option selected value="EUR">EUR</option>
+        <option *ngFor="let x of test" value="{{x.id}}">{{x.id}}</option>
+      </select> -->
+      <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="moneda2" (change)='convertir()'>
+          <mat-option selected value="EUR">EUR</mat-option>
+          <mat-option *ngFor="let x of test" value="{{x.id}}">
+            {{x.id}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="end center">
+    <div class="child-1">
+      <mat-form-field class="example-form-field between" appearance="fill">
+        <input matInput value="1" type="number" class="form-control" [(ngModel)]='textoDeInput' (change)="convertir()"
+          style="text-align: end;">
+      </mat-form-field>
+    </div>
+    <div class="child-2">
+      <mat-label style="color:#5fbaa7 ;" class="between">{{conversion[0]}}</mat-label>
+    </div>
+    <div class="child-3">
+      <mat-label>{{conversion[0]|currency}}</mat-label>
+    </div>
+  </div>
+</div>
+<!-- <div fxFlexAlign="center">
+
+
+</div>
+<div fxFlexAlign="center">
+
+
+</div>
+
+<div fxFlexAlign="center">
+
+
+</div> -->
