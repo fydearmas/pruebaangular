@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { find } from 'rxjs';
 import { ConversorService } from '../services/conversor.service';
 
 
@@ -9,59 +10,43 @@ import { ConversorService } from '../services/conversor.service';
 })
 export class TypeMoneyOneComponent implements OnInit {
 
-  test: any = [];
+  arrayMonedas: any = [];
+  arrayConversiones: any = [];
+  posicion: number = -1
   moneda1: string = 'USD';
   moneda2: string = 'EUR';
+  valorMoneda: number = 0
   conversion: any = [];
-  textoDeInput: any = 1
+  multiplicacion: any = 1
   ultimaOperacion: string = '';
   constructor(private conversorService: ConversorService) { }
   ngOnInit(): void {
-    this.buscarMonedas();
-    this.convertir();
+    this.buscarMonedas(this.moneda1);
+    // this.convertir();
   }
 
-  buscarMonedas() {
-    let i = 0
+  buscarMonedas(valor: string) {
+    this.conversorService.getMonedas(valor).subscribe((data: any) => {
+      this.arrayMonedas = Object.keys(data.data)
+      this.arrayConversiones = Object.values(data.data)
 
-    let busqueda: string = 'currencies?apiKey=02cb12c5ff41abd89e6f';
-    this.conversorService.getMonedas(busqueda).subscribe((data: any) => {
-      for (let c in data.results) {
-        this.test[i] = data.results[c]
-        i++
-      }
+      const condicion = (element: string) => element === this.moneda2;
+      this.posicion =Object.keys(data.data).findIndex(condicion);
+      this.valorMoneda=this.arrayConversiones[this.posicion]
+      this.multiplicar()
     });
 
   }
 
-  convertir() {
-    let i = 0
-    let busqueda: string = 'convert?q=' + this.moneda1 + '_' + this.moneda2 + ',' + this.moneda2 + '_' + this.moneda1 + '&compact=ultra&apiKey=02cb12c5ff41abd89e6f'
-    console.log(busqueda)
-    // if(this.ultimaOperacion === busqueda){
-    //   this.swap()
-    // }
-    this.conversorService.getMonedas(busqueda).subscribe((data: any) => {
-      for (let c in data) {
-        this.conversion[i] = data[c]
-        i++
-      }
-      this.ultimaOperacion = busqueda;
-      this.conversion[0] = this.conversion[0] * this.textoDeInput
-      this.conversion[1] = this.conversion[1] * this.textoDeInput
-    });
-  }
-
-  aumentar(){
-
+  multiplicar() {
+      this.arrayConversiones[this.posicion] = this.valorMoneda * this.multiplicacion
   }
 
   swap() {
-    let temp = ''
-    temp = this.moneda1
+    let temp = this.moneda1
+    this.buscarMonedas(this.moneda2);
     this.moneda1 = this.moneda2
     this.moneda2 = temp
-    this.convertir();
   }
 
 }

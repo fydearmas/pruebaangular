@@ -1,34 +1,26 @@
-<div fxLayout="row" fxLayoutAlign="center start">
+<div style="min-height: 400px;" fxLayout="row" fxLayoutAlign="center start">
   <div fxLayout="column" fxLayoutAlign="end center">
     <div class="child-1">
-      <!-- <select [(ngModel)]="moneda1" (change)='convertir()'>
-        <option selected value="USD">USD</option>
-        <option *ngFor="let x of test" value="{{x.id}}">{{x.id}}</option>
-      </select> -->
       <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="moneda1" (change)='convertir()'>
+        <mat-select style=" font-weight: bold; font-size: x-large;" [(ngModel)]="moneda1" (change)='multiplicar()'>
           <mat-option selected value="USD">USD</mat-option>
-          <mat-option *ngFor="let x of test" value="{{x.id}}">
-            {{x.id}}
+          <mat-option *ngFor="let x of arrayMonedas;let indice=index" value="{{x}}">
+            {{x}}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="child-2">
+    <div class="child-2" style="padding-bottom: 20px;">
       <button mat-raised-button color="warn" style="background-color: #5fbaa7; color: white;" (click)='swap()'>Swap
       </button>
 
     </div>
     <div class="child-3">
-      <!-- <select [(ngModel)]="moneda2" (change)='convertir()'>
-        <option selected value="EUR">EUR</option>
-        <option *ngFor="let x of test" value="{{x.id}}">{{x.id}}</option>
-      </select> -->
       <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="moneda2" (change)='convertir()'>
+        <mat-select style=" font-weight: bold; font-size: x-large;" [(ngModel)]="moneda2" (change)='multiplicar()'>
           <mat-option selected value="EUR">EUR</mat-option>
-          <mat-option *ngFor="let x of test" value="{{x.id}}">
-            {{x.id}}
+          <mat-option *ngFor="let x of arrayMonedas;let indice=index" value="{{x}}">
+            {{x}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -37,28 +29,16 @@
   <div fxLayout="column" fxLayoutAlign="end center">
     <div class="child-1">
       <mat-form-field class="example-form-field between" appearance="fill">
-        <input matInput value="1" type="number" class="form-control" [(ngModel)]='textoDeInput' (change)="convertir()"
-          style="text-align: end;">
+        <input matInput value="1" type="number" class="form-control" [(ngModel)]='multiplicacion' (change)="multiplicar()"
+          style="text-align: end; font-weight: bold; font-size: x-large;">
       </mat-form-field>
     </div>
-    <div class="child-2">
-      <mat-label style="color:#5fbaa7 ;" class="between">{{conversion[0]}}</mat-label>
+    <div class="child-2" style="width: 100%; padding-top: 20px; padding-left: 40px; text-align: right;">
+      <mat-label style="color:#5fbaa7 ; text-align: end;" class="between">{{multiplicacion}} {{moneda1}} = {{arrayConversiones[posicion]}} {{moneda2}}</mat-label>
     </div>
-    <div class="child-3">
-      <mat-label>{{conversion[0]|currency}}</mat-label>
+    <div class="child-3" style="text-align: end; font-weight: bold; font-size: x-large; padding-top: 50px;padding-left: 170px;">
+      <mat-label>{{arrayConversiones[posicion]|currency}}</mat-label>
     </div>
   </div>
 </div>
-<!-- <div fxFlexAlign="center">
 
-
-</div>
-<div fxFlexAlign="center">
-
-
-</div>
-
-<div fxFlexAlign="center">
-
-
-</div> -->
