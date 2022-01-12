@@ -1,12 +1,19 @@
+<router-outlet>
+  <div class="container" fxLayout="column" fxLayout.md="row" fxLayoutGap="20px">
+    <div class="cardWrap" fxLayout.lt-md="column" fxLayout.md="column" fxLayout="row" fxFlex.md="50"
+      fxLayoutAligmnet="space-between center" fxLayoutGap="20px">
 
-<div class="container" fxLayout="column" fxLayout.md="row" fxLayoutGap="20px">
-  <div class="cardWrap" fxLayout.lt-md="column" fxLayout.md="column"  fxLayout="row" fxFlex.md="50" fxLayoutAligmnet="space-between center" fxLayoutGap="20px" >
+      <div fxFlex.lt-md="100" fxFlex="100">
+        <app-header></app-header>
 
-  <div fxFlex.lt-md="100" fxFlex="100" >
-    <app-header></app-header>
-    <app-type-money-one></app-type-money-one>
+
+            <!-- <app-type-money-one></app-type-money-one> -->
+            <!-- <app-historical-currency-exchange></app-historical-currency-exchange> -->
+          <!-- </div> -->
+
+      </div>
+    </div>
   </div>
 
-</div>
 
-</div>
+</router-outlet>

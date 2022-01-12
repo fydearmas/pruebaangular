@@ -1,0 +1,32 @@
+<div style="min-height: 400px;" fxLayout="row" fxLayoutAlign="center start" class="color">
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <div class="child-1">
+      <mat-form-field appearance="fill">
+        <mat-label>Moneda</mat-label>
+        <mat-select [(ngModel)]="moneda" >
+          <mat-option selected value="USD">USD</mat-option>
+          <mat-option *ngFor="let x of arrayMonedas;let indice=index" value="{{x}}" >
+            {{x}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="child-2" style="padding-left: 15px; padding-right: 15px;">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput name="desde" value="{{fechaActual}}" type="date" class="form-control" [(ngModel)]="desde" >
+      </mat-form-field>
+    </div>
+    <div class="child-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de fin</mat-label>
+        <input name="hasta" matInput value="{{fechaActual}}" type="date" class="form-control" [(ngModel)]="hasta">
+      </mat-form-field>
+    </div>
+  </div>
+   <div fxLayout="row" fxLayoutAlign="end center" style="padding-left: 20px;">
+    <div class="child-1">
+      <button (click)="historico()">Buscar</button>
+    </div>
+  </div>
+</div>

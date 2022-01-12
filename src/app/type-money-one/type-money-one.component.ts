@@ -22,7 +22,6 @@ export class TypeMoneyOneComponent implements OnInit {
   constructor(private conversorService: ConversorService) { }
   ngOnInit(): void {
     this.buscarMonedas(this.moneda1);
-    // this.convertir();
   }
 
   buscarMonedas(valor: string) {

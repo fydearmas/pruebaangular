@@ -5,7 +5,7 @@ import {MaterialExampleModule} from '../material.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 
 
@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { TypeMoneyOneComponent } from './type-money-one/type-money-one.component';
+import { AppRoutingModuleModule } from './app-routing-module.module';
+import { HistoricalCurrencyExchangeComponent } from './historical-currency-exchange/historical-currency-exchange.component';
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { TypeMoneyOneComponent } from './type-money-one/type-money-one.component
     AppComponent,
     HeaderComponent,
     TypeMoneyOneComponent,
+    HistoricalCurrencyExchangeComponent,
 
 
   ],
@@ -34,8 +37,9 @@ import { TypeMoneyOneComponent } from './type-money-one/type-money-one.component
     MatInputModule,
     HttpClientModule,
     FormsModule,
-    // ReactiveFormsModule,
-    MatNativeDateModule
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    AppRoutingModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
